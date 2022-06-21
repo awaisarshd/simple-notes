@@ -1,32 +1,35 @@
 import { lazy } from "react";
-import { Navigate } from "react-router-dom";
 
 import AppLayout from "../layouts/AppLayout";
-import BlankLayout from "../layouts/BlankLayout";
-
-const DefaultRoute = "/home";
 
 const Home = lazy(() => import("../views/HomeView"));
+const Note = lazy(() => import("../views/NoteView"));
+const Tags = lazy(() => import("../views/TagsView"));
 
 const Routes = [
     {
         path: "/",
-        index: true,
-        element: <Navigate replace to={DefaultRoute} />,
-    },
-    {
-        path: "/home",
         element: <AppLayout />,
-        children: [{ index: true, element: <Home /> }],
-    },
-    {
-        path: "/error",
-        element: <BlankLayout />,
-        children: [{ index: true, element: <></> }],
+        children: [
+            { index: true, element: <Home /> },
+            {
+                path: "/notes",
+                children: [
+                    { index: true, element: <Home /> },
+                    { path: "/notes/add", element: <Note /> },
+                    { path: "/notes/edit/:noteId", element: <Note /> },
+                ],
+            },
+            { path: "/tags", element: <Tags /> },
+        ],
     },
     {
         path: "*",
-        element: <></>,
+        element: (
+            <>
+                <p>Nothing to see here!</p>
+            </>
+        ),
     },
 ];
 

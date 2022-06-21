@@ -1,31 +1,36 @@
+import { Edit, Tag } from "react-feather";
+import { Link } from "react-router-dom";
+import {
+    Collapse,
+    Nav,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    NavItem,
+} from "reactstrap";
+
 const Header = ({ appName, homePage, logoutLink }) => {
     return (
-        <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a
-                className="navbar-brand col-md-3 col-lg-2 me-0 px-3"
-                href={homePage}
-            >
-                {appName}
-            </a>
-            <button
-                className="navbar-toggler position-absolute d-md-none collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="navbar-nav">
-                <div className="nav-item text-nowrap">
-                    <a className="nav-link px-3" href={logoutLink}>
-                        Sign out
-                    </a>
-                </div>
-            </div>
-        </header>
+        <>
+            <Navbar color="dark" expand="md" dark>
+                <NavbarBrand href="/">Simple Notes</NavbarBrand>
+                <NavbarToggler onClick={function noRefCheck() {}} />
+                <Collapse navbar>
+                    <Nav className="me-auto" navbar>
+                        <NavItem>
+                            <Link to={"/notes/add"} className="nav-link">
+                                <Edit size={16} className="feather" />
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to={"/tags"} className="nav-link">
+                                <Tag size={16} className="feather" />
+                            </Link>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        </>
     );
 };
 
