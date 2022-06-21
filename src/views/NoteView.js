@@ -163,6 +163,7 @@ const NoteView = () => {
                                 height={5}
                                 onChange={(e) => setContent(e.target.value)}
                                 invalid={!content && submitted}
+                                style={{ height: "300px" }}
                             />
                             <Label for="NoteContent">Note Content</Label>
                         </FormGroup>
