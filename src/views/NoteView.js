@@ -50,6 +50,7 @@ const NoteView = () => {
     }, [params]);
 
     const resetView = () => {
+        setNoteId("");
         setPageTitle("Add New");
         setTitle("");
         setContent("");
