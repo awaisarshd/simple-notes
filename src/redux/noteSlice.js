@@ -20,8 +20,6 @@ export const noteSlice = createSlice({
     },
 });
 
-export const getAllNotes = (state) => state.notes.value;
-
 export const { addNote, updateNote } = noteSlice.actions;
 
 export const noteReducer = noteSlice.reducer;
