@@ -62,11 +62,21 @@ const NoteView = () => {
 
     const loadNote = (id) => {
         const note = notes.find((n) => n.id === id);
+
+        // if note is found, show its details
         if (note) {
             setTitle(note.title);
             setContent(note.content);
             setTags(note.tags);
             setOldTags(note.tags);
+        }
+
+        // if not, then navigate to add note.
+        else {
+            toast.warn(
+                "Unable to find the note you are locking for. Please create a new one!"
+            );
+            navigator("/notes/add");
         }
     };
 
